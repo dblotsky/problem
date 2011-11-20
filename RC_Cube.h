@@ -19,6 +19,7 @@ class RC_Cube {
         void spin(RC_Plane plane, int index, bool clockwise);
         void print();
         void reset();
+        void help();
         
     private:
         RC_CubeNode** nodes;

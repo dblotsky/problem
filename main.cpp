@@ -26,20 +26,8 @@ int main(int argc, char* argv[]) {
     bool invalid = false;
     
     // print help
-    const string HELP =
-    "\n"
-    "+--------------------------------------------------+\n"
-    "|                   Rubik's Cube                   |\n"
-    "|                                                  |\n"
-    "+---------------------+----------------------------+\n"
-    "|       COMMAND       |           ACTION           |\n"
-    "+---------------------+----------------------------+\n"
-    "| p                   | print the cube             |\n"
-    "| f|ba|t|bo|l|r       | print a face               |\n"
-    "| z|x|y 0|1|2 [cc/cw] | spin a plane of the cube   |\n"
-    "+---------------------+----------------------------+\n";
     
-    cout << HELP << endl;
+    cube->help();
     
     // loop a prompt while cin is good and while the user has not exited
     while (cin.good() && !exited) {
@@ -51,35 +39,73 @@ int main(int argc, char* argv[]) {
         command = raw_command;
         
         // act on command
-        if (command == "q") {
+        if (command == "q" ||
+            command == "quit" ||
+            command == "exit"
+        ) {
             exited = true;
             
         } else if (command.size() == 0) {
             
-        } else if (command == "p") {
+        } else if (command == "p" || 
+                   command == "d" || 
+                   command == "print" || 
+                   command == "display" 
+        ) {   
             cube->print();
             
-        } else if (command == "r") {
+        } else if (command == "r" || 
+                   command == "c" ||
+                   command == "reset" ||
+                   command == "clear"
+            ) {
             cube->reset();
          
-        } else if (command == "f") {
+        } else if (command == "f" || 
+                   command == "fr" || 
+                   command == "front"
+        ) {
             cube->print_face(FRONT);
             
-        } else if (command == "t") {
+        } else if (command == "t" ||
+                   command == "to" ||
+                   command == "top"
+        ) {
             cube->print_face(TOP);
             
-        } else if (command == "bo") {
+        } else if (command == "bo" ||
+                   command == "bt" ||
+                   command == "bottom"
+        ) {
             cube->print_face(BOTTOM);
             
-        } else if (command == "ba") {
+        } else if (command == "ba" ||
+                   command == "back"
+        ) {
             cube->print_face(BACK);
             
-        } else if (command == "l") {
+        } else if (command == "b") {
+            cube->print_face(BACK);
+            cube->print_face(BOTTOM);
+            
+        } else if (command == "l" ||
+                   command == "le" ||
+                   command == "left"
+        ) {
             cube->print_face(LEFT);
             
-        } else if (command == "r") {
+        } else if (command == "ri" ||
+                   command == "rg" ||
+                   command == "right"
+        ) {
             cube->print_face(RIGHT);
             
+        } else if (command == "h" ||
+                   command == "help" ||
+                   command == "?"
+        ) {
+            cube->help();
+           
         } else if (command.size() == 6 || command.size() == 3) {
             
             bool clockwise = true;
@@ -129,7 +155,7 @@ int main(int argc, char* argv[]) {
         }
         
         if (invalid) {
-            cout << "Unknown command." << endl;
+            cout << "Unknown command: \"" << command << "\"." << endl;
             invalid = false;
         }
     }

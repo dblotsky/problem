@@ -43,6 +43,35 @@ RC_Cube::RC_Cube() {
     reset();
 }
 
+void RC_Cube::help() {
+    
+    const string HELP =
+    "+--------------------------------------------------+\n"
+    "|                   Rubik's Cube                   |\n"
+    "+----------------------+---------------------------+\n"
+    "|       COMMAND        |           ACTION          |\n"
+    "+----------------------+---------------------------+\n"
+    "| p|print|display|d    | print the cube            |\n"
+    "| r|reset|c|clear      | reset the cube            |\n"
+    "|                      |                           |\n"
+    "| z|x|y 0|1|2 [cc/cw]  | spin a plane of the cube  |\n"
+    "|                      | * cw if not specified     |\n"
+    "|                      |                           |\n"
+    "| f|fr|front           | print the front           |\n"
+    "| ba|back              | ''    ''  back            |\n"
+    "| t|to|top             | ''    ''  top             |\n"
+    "| bo|bt|bottom         | ''    ''  bottom          |\n"
+    "| l|le|left            | ''    ''  left            |\n"
+    "| ri|rg|right          | ''    ''  right           |\n"
+    "|                      |                           |\n"
+    "| h|help|?             | prints this text          |\n"
+    "| q|quit|exit          | quit                      |\n"
+    "+----------------------+---------------------------+\n";
+    
+    cout << endl << HELP << endl;
+    return;
+}
+
 void RC_Cube::reset() {
     paint_face(FRONT, ORANGE);
     paint_face(BACK, BLUE);

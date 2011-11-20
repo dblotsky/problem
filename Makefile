@@ -7,7 +7,7 @@ OBJECTS   = main.o RC_CubeNode.o RC_Enums.o RC_Cube.o
 
 # outputs
 DEPENDS = ${OBJECTS:.o=.d}
-EXECUTABLE = rubiks.out
+EXECUTABLE = rubiks
 
 # build rule
 $(EXECUTABLE) : $(OBJECTS)

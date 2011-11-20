@@ -18,6 +18,7 @@ class RC_Cube {
         void paint_face(RC_Face face, RC_Color color);
         void spin(RC_Plane plane, int index, bool clockwise);
         void print();
+        void reset();
         
     private:
         RC_CubeNode** nodes;

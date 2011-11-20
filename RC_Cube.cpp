@@ -40,6 +40,10 @@ RC_Cube::RC_Cube() {
     }
     
     // paint faces
+    reset();
+}
+
+void RC_Cube::reset() {
     paint_face(FRONT, ORANGE);
     paint_face(BACK, BLUE);
     paint_face(LEFT, WHITE);
@@ -216,8 +220,6 @@ void RC_Cube::print_face(RC_Face face) {
         }
         
     }
-    
-    cout << endl;
     
     delete face_nodes;
     return;

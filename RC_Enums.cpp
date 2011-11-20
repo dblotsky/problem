@@ -48,31 +48,31 @@ string str(RC_Color color) {
     
     switch (color) {
         case ORANGE:
-            return_value = "O ";
+            return_value = "1 ";
             break;
             
         case BLUE:
-            return_value = "B ";
+            return_value = "2 ";
             break;
             
         case WHITE:
-            return_value = "W ";
+            return_value = "3 ";
             break;
             
         case GREEN:
-            return_value = "G ";
+            return_value = "4 ";
             break;
             
         case RED:
-            return_value = "R ";
+            return_value = "5 ";
             break;
             
         case YELLOW:
-            return_value = "Y ";
+            return_value = "6 ";
             break;
             
         case BLANK:
-            return_value = "- ";
+            return_value = "0 ";
             break;
             
         default:

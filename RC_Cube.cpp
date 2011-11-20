@@ -52,7 +52,7 @@ void RC_Cube::help() {
     "|       COMMAND        |           ACTION          |\n"
     "+----------------------+---------------------------+\n"
     "| p|print|display|d    | print the cube            |\n"
-    "| r|reset|c|clear      | reset the cube            |\n"
+    "| c|clear|reset        | reset the cube            |\n"
     "|                      |                           |\n"
     "| z|x|y 0|1|2 [cc/cw]  | spin a plane of the cube  |\n"
     "|                      | * cw if not specified     |\n"
@@ -62,7 +62,7 @@ void RC_Cube::help() {
     "| t|to|top             | ''    ''  top             |\n"
     "| bo|bt|bottom         | ''    ''  bottom          |\n"
     "| l|le|left            | ''    ''  left            |\n"
-    "| ri|rg|right          | ''    ''  right           |\n"
+    "| r|ri|rg|right        | ''    ''  right           |\n"
     "|                      |                           |\n"
     "| h|help|?             | prints this text          |\n"
     "| q|quit|exit          | quit                      |\n"
@@ -79,6 +79,8 @@ void RC_Cube::reset() {
     paint_face(RIGHT, GREEN);
     paint_face(TOP, RED);
     paint_face(BOTTOM, YELLOW);
+    cout << "------- reset the cube -------" << endl;
+    
 }
 
 RC_CubeNode* RC_Cube::at(int x, int y, int z) {
@@ -134,7 +136,7 @@ void RC_Cube::spin(RC_Plane plane, int index, bool clockwise) {
         slice[i]->spin(plane, clockwise);
     }
     
-    cout << "------- spinning -------" << endl;
+    cout << "------- spun the cube -------" << endl;
     
     delete slice;
     delete temp;

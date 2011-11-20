@@ -54,8 +54,7 @@ int main(int argc, char* argv[]) {
         ) {   
             cube->print();
             
-        } else if (command == "r" || 
-                   command == "c" ||
+        } else if (command == "c" ||
                    command == "reset" ||
                    command == "clear"
             ) {
@@ -94,7 +93,8 @@ int main(int argc, char* argv[]) {
         ) {
             cube->print_face(LEFT);
             
-        } else if (command == "ri" ||
+        } else if (command == "r" ||
+                   command == "ri" ||
                    command == "rg" ||
                    command == "right"
         ) {

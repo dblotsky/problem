@@ -1,0 +1,8 @@
+*.out
+.DS_Store
+*.class
+*.jar
+*.orig
+*.o
+*.d
+*.exe

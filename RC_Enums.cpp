@@ -44,35 +44,37 @@ string str(RC_Face face) {
 }
 
 string str(RC_Color color) {
+    
     string return_value = "";
+    string display_character = "#";
     
     switch (color) {
         case ORANGE:
-            return_value = "1 ";
+            return_value = "\033[31m" + display_character + "\033[m";
             break;
             
         case BLUE:
-            return_value = "2 ";
+            return_value = "\033[32m" + display_character + "\033[m";
             break;
             
         case WHITE:
-            return_value = "3 ";
+            return_value = "\033[33m" + display_character + "\033[m";
             break;
             
         case GREEN:
-            return_value = "4 ";
+            return_value = "\033[34m" + display_character + "\033[m";
             break;
             
         case RED:
-            return_value = "5 ";
+            return_value = "\033[35m" + display_character + "\033[m";
             break;
             
         case YELLOW:
-            return_value = "6 ";
+            return_value = "\033[36m" + display_character + "\033[m";
             break;
             
         case BLANK:
-            return_value = "0 ";
+            return_value = "* ";
             break;
             
         default:

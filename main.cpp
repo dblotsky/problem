@@ -54,12 +54,16 @@ int main(int argc, char* argv[]) {
         ) {   
             cube->print();
             
-        } else if (command == "c" ||
-                   command == "reset" ||
+        } else if (command == "reset" ||
                    command == "clear"
-            ) {
+        ) {
             cube->reset();
-         
+        
+        } else if (command == "c" ||
+                   command == "color"
+        ) {
+            toggle_color();
+        
         } else if (command == "f" || 
                    command == "fr" || 
                    command == "front"

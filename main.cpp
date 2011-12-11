@@ -39,7 +39,9 @@ int main(int argc, char* argv[]) {
         command = raw_command;
         
         // act on command
-        if (command == "q" ||
+        if (command.size() >= 255) {
+            cout << "Command too long." << endl;
+        } else if (command == "q" ||
             command == "quit" ||
             command == "exit"
         ) {

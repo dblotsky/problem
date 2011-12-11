@@ -54,6 +54,12 @@ int main(int argc, char* argv[]) {
         ) {   
             cube->print();
             
+        } else if (command == "j" || 
+                   command == "js" || 
+                   command == "json"
+        ) {   
+            cube->print_json();
+            
         } else if (command == "reset" ||
                    command == "clear"
         ) {

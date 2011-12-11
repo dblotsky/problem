@@ -15,9 +15,11 @@ class RC_Cube {
         void select_nodes(RC_Plane plane, int constant, RC_CubeNode** return_array);
         void select_face(RC_Face face, RC_CubeNode** return_array);
         void print_face(RC_Face face);
+        void print_face_json(RC_Face face);
         void paint_face(RC_Face face, RC_Color color);
         void spin(RC_Plane plane, int index, bool clockwise);
         void print();
+        void print_json();
         void reset();
         void help();
         

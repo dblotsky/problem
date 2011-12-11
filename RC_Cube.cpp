@@ -52,6 +52,8 @@ void RC_Cube::help() {
     "|       COMMAND        |           ACTION          |\n"
     "+----------------------+---------------------------+\n"
     "| p|print|display|d    | print the cube            |\n"
+    "| j|json|js            | print the cube in JSON    |\n"
+    "|                      |                           |\n"
     "| clear|reset          | reset the cube            |\n"
     "| c|color              | toggle color output       |\n"
     "|                      |                           |\n"
@@ -68,6 +70,9 @@ void RC_Cube::help() {
     "| h|help|?             | prints this text          |\n"
     "| q|quit|exit          | quit                      |\n"
     "+----------------------+---------------------------+\n";
+    
+    // TODO: add stochasticity
+    // TODO: output in JSON
     
     cout << endl << HELP << endl;
     return;
@@ -141,16 +146,6 @@ void RC_Cube::spin(RC_Plane plane, int index, bool clockwise) {
     
     delete slice;
     delete temp;
-    return;
-}
-
-void RC_Cube::print() {
-    print_face(FRONT);
-    print_face(TOP);
-    print_face(BACK);
-    print_face(BOTTOM);
-    print_face(LEFT);
-    print_face(RIGHT);
     return;
 }
 
@@ -232,6 +227,21 @@ void RC_Cube::select_face(RC_Face face, RC_CubeNode** return_array) {
     return;
 }
 
+void RC_Cube::paint_face(RC_Face face, RC_Color color) {
+    
+    // get the face
+    RC_CubeNode** face_nodes = new RC_CubeNode*[SIDE_LENGTH * SIDE_LENGTH];
+    select_face(face, face_nodes);
+        
+    // paint every node's face
+    for (int i = 0; i < SIDE_LENGTH * SIDE_LENGTH; i++) {
+        face_nodes[i]->set_face(face, color);
+    }
+    
+    delete face_nodes;
+    return;
+}
+
 void RC_Cube::print_face(RC_Face face) {
     
     // get the face
@@ -257,17 +267,66 @@ void RC_Cube::print_face(RC_Face face) {
     return;
 }
 
-void RC_Cube::paint_face(RC_Face face, RC_Color color) {
+void RC_Cube::print() {
+    print_face(FRONT);
+    print_face(TOP);
+    print_face(BACK);
+    print_face(BOTTOM);
+    print_face(LEFT);
+    print_face(RIGHT);
+    return;
+}
+
+void RC_Cube::print_face_json(RC_Face face) {
+    
+    string indent = "    ";
     
     // get the face
     RC_CubeNode** face_nodes = new RC_CubeNode*[SIDE_LENGTH * SIDE_LENGTH];
     select_face(face, face_nodes);
-        
-    // paint every node's face
-    for (int i = 0; i < SIDE_LENGTH * SIDE_LENGTH; i++) {
-        face_nodes[i]->set_face(face, color);
-    }
+    
+    cout << indent << "\"" << str(face) << "\": [" << endl;
+    cout << indent + indent << "[" << str(face_nodes[0]->get_face(face)) << ", " << str(face_nodes[1]->get_face(face)) << ", " << str(face_nodes[2]->get_face(face)) << "]," << endl;
+    cout << indent + indent << "[" << str(face_nodes[3]->get_face(face)) << ", " << str(face_nodes[4]->get_face(face)) << ", " << str(face_nodes[5]->get_face(face)) << "]," << endl;
+    cout << indent + indent << "[" << str(face_nodes[6]->get_face(face)) << ", " << str(face_nodes[7]->get_face(face)) << ", " << str(face_nodes[8]->get_face(face)) << "]" << endl;
+    cout << indent << "]";
     
     delete face_nodes;
+    return;
+}
+
+void RC_Cube::print_json() {
+    
+    cout << "{\n";
+    
+    bool remember_to_flip_color = false;
+    if (using_color()) {
+        off_color();
+        remember_to_flip_color = true;
+    }
+    
+    print_face_json(FRONT);
+    cout << ",\n";
+    
+    print_face_json(TOP);
+    cout << ",\n";
+    
+    print_face_json(BACK);
+    cout << ",\n";
+    
+    print_face_json(BOTTOM);
+    cout << ",\n";
+    
+    print_face_json(LEFT);
+    cout << ",\n";
+    
+    print_face_json(RIGHT);
+    
+    cout << "\n}\n";
+    
+    if (remember_to_flip_color) {
+        on_color();
+    }
+    
     return;
 }

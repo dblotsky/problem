@@ -12,5 +12,8 @@ enum RC_Plane {XY, XZ, YZ};
 string str(RC_Face face);
 string str(RC_Color color);
 void toggle_color();
+void on_color();
+void off_color();
+bool using_color();
 
 #endif

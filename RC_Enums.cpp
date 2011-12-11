@@ -17,6 +17,18 @@ void toggle_color() {
     }
 }
 
+void on_color() {
+    use_color = true;
+}
+
+void off_color() {
+    use_color = false;
+}
+
+bool using_color() {
+    return use_color;
+}
+
 string str(RC_Face face) {
     string return_value = "";
     
@@ -95,31 +107,31 @@ string str(RC_Color color) {
     } else {
         switch (color) {
             case ORANGE:
-                return_value = "1 ";
+                return_value = "1";
                 break;
                 
             case BLUE:
-                return_value = "2 ";
+                return_value = "2";
                 break;
                 
             case WHITE:
-                return_value = "3 ";
+                return_value = "3";
                 break;
                 
             case GREEN:
-                return_value = "4 ";
+                return_value = "4";
                 break;
                 
             case RED:
-                return_value = "5 ";
+                return_value = "5";
                 break;
                 
             case YELLOW:
-                return_value = "6 ";
+                return_value = "6";
                 break;
                 
             case BLANK:
-                return_value = "* ";
+                return_value = "*";
                 break;
                 
             default:

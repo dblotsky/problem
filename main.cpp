@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     char raw_command[256];
     string command = "";
     
-    // exit flag
+    // exit flag and invalid command flag
     bool exited = false;
     bool invalid = false;
     
